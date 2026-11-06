@@ -1,0 +1,4 @@
+{
+  "ignore": ["data/**", "tests/**"],
+  "ext": "js,mjs,cjs"
+}

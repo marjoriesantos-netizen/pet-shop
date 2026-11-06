@@ -39,6 +39,7 @@ Também é possível rodar separadamente:
 npm run dev:backend    # apenas a API (nodemon)
 npm run dev:frontend   # apenas o painel React
 npm run start:backend  # API sem nodemon
+npm run test:api       # testes automatizados da API
 npm run build:frontend # build de produção do React
 ```
 
@@ -60,6 +61,25 @@ VITE_API_URL=http://localhost:3000
 ```
 
 O CORS aceita várias origens separadas por vírgula. Em produção, não use `*`.
+
+### Testes rápidos da API
+
+Com a API rodando, execute em outro terminal:
+
+```bash
+npm run test:api
+```
+
+O script `backend/tests/api.test.mjs` valida o CRUD completo, os erros `400`, `404` e `204`, o soft delete e a restauração. Ao final, ele remove apenas o pet criado para o teste, sem alterar os demais cadastros.
+
+Também é possível testar manualmente pelo navegador:
+
+- http://localhost:3000/health — status da API
+- http://localhost:3000/api — lista de endpoints
+- http://localhost:3000/pets — pets ativos
+- http://localhost:3000/pets?includeDeleted=true — ativos + arquivados
+
+Exemplos de `curl` para criar, atualizar, arquivar e restaurar estão na [seção 3](#3-endpoints-da-api).
 
 ---
 
